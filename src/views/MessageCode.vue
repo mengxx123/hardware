@@ -1,45 +1,47 @@
 <template>
     <my-page title="HDB3码" :page="page">
-        <textarea class="form-control" v-model="code" rows="6" placeholder="消息码"></textarea>
-        <div class="btns">
-            <ui-raised-button class="btn" primary label="编码" @click="convert" />
+        <div class="common-container container">
+            <textarea class="form-control" v-model="code" rows="6" placeholder="消息码"></textarea>
+            <div class="btns">
+                <ui-raised-button class="btn" primary label="编码" @click="convert" />
+            </div>
+            <ui-article class="article" v-if="result">
+                <table :style="{width: (200 + codes.length * 72) + 'px'}">
+                    <tr>
+                        <th width="200">消息码</th>
+                        <td v-for="item in codes">{{ item.value }}</td>
+                    </tr>
+                    <tr>
+                        <th>AMI</th>
+                        <td v-for="item in amiCodes">{{ item }}</td>
+                    </tr>
+                    <tr>
+                        <th>编码步骤1: B00V</th>
+                        <td v-for="item in bvCodes">{{ item }}</td>
+                    </tr>
+                    <tr>
+                        <th>编码步骤2: 确定V</th>
+                        <td v-for="item in vCodes">{{ item }}</td>
+                    </tr>
+                    <tr>
+                        <th>编码步骤3: 确定B</th>
+                        <td v-for="item in bCodes">{{ item }}</td>
+                    </tr>
+                    <tr>
+                        <th>HDB3</th>
+                        <td v-for="item in hdb3Codes">{{ item }}</td>
+                    </tr>
+                    <tr>
+                        <th>解码步骤1：</th>
+                        <td v-for="item in checkCodes">{{ item }}</td>
+                    </tr>
+                    <tr>
+                        <th>解码步骤2：</th>
+                        <td v-for="item in checkCodes2">{{ item }}</td>
+                    </tr>
+                </table>
+            </ui-article>
         </div>
-        <ui-article class="article" v-if="result">
-            <table :style="{width: (200 + codes.length * 72) + 'px'}">
-                <tr>
-                    <th width="200">消息码</th>
-                    <td v-for="item in codes">{{ item.value }}</td>
-                </tr>
-                <tr>
-                    <th>AMI</th>
-                    <td v-for="item in amiCodes">{{ item }}</td>
-                </tr>
-                <tr>
-                    <th>编码步骤1: B00V</th>
-                    <td v-for="item in bvCodes">{{ item }}</td>
-                </tr>
-                <tr>
-                    <th>编码步骤2: 确定V</th>
-                    <td v-for="item in vCodes">{{ item }}</td>
-                </tr>
-                <tr>
-                    <th>编码步骤3: 确定B</th>
-                    <td v-for="item in bCodes">{{ item }}</td>
-                </tr>
-                <tr>
-                    <th>HDB3</th>
-                    <td v-for="item in hdb3Codes">{{ item }}</td>
-                </tr>
-                <tr>
-                    <th>解码步骤1：</th>
-                    <td v-for="item in checkCodes">{{ item }}</td>
-                </tr>
-                <tr>
-                    <th>解码步骤2：</th>
-                    <td v-for="item in checkCodes2">{{ item }}</td>
-                </tr>
-            </table>
-        </ui-article>
         <!-- <textarea class="form-control" v-model="result" rows="6" placeholder="转换结果" v-if="result"></textarea> -->
     </my-page>
 </template>

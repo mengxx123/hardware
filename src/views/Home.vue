@@ -1,16 +1,18 @@
 <template>
-    <my-page title="通讯/硬件">
-        <div class="tool-list">
-            <div class="mu-paper list-item mu-paper-round mu-paper-1" 
-                v-for="app in apps">
-                <router-link class="link" :to="app.to" :href="app.href" :target="app.target">
-                    <img :src="app.icon" class="img">
-                    <div class="info">
-                        <h3 class="text">{{ app.name }}</h3>
-                        <div class="desc">{{ app.desc }}</div>
-                    </div>
-                    <i class="icon icon-heart"></i>
-                </router-link>
+    <my-page title="通讯/硬件" :page="page">
+        <div class="common-container container">
+            <div class="tool-list">
+                <div class="mu-paper list-item mu-paper-round mu-paper-1" 
+                    v-for="app in apps">
+                    <router-link class="link" :to="app.to" :href="app.href" :target="app.target">
+                        <img :src="app.icon" class="img">
+                        <div class="info">
+                            <h3 class="text">{{ app.name }}</h3>
+                            <div class="desc">{{ app.desc }}</div>
+                        </div>
+                        <i class="icon icon-heart"></i>
+                    </router-link>
+                </div>
             </div>
         </div>
     </my-page>
@@ -27,7 +29,25 @@
                         icon: '/static/img/coding.svg',
                         to: '/messageCode'
                     },
-                ]
+                ],
+                page: {
+                    menu: [
+                        {
+                            type: 'icon',
+                            icon: 'search',
+                            href: 'https://search.yunser.com?utm_source=hardware',
+                            target: '_blank',
+                            title: '搜索'
+                        },
+                        {
+                            type: 'icon',
+                            icon: 'apps',
+                            href: 'https://app.yunser.com?utm_source=hardware',
+                            target: '_blank',
+                            title: '应用'
+                        }
+                    ]
+                }
             }
         },
         computed: {
